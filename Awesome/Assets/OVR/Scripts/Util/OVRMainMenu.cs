@@ -224,7 +224,7 @@ public class OVRMainMenu : MonoBehaviour
 			// Remove this once Unity 5 has a more recent merge of Unity 4.6.
 	        c.renderMode = RenderMode.World;
 #else
-	        c.renderMode = RenderMode.WorldSpace;
+	        //c.renderMode = RenderMode.WorldSpace;
 #endif
 	        c.pixelPerfect = false;
 #endif
@@ -943,7 +943,7 @@ public class OVRMainMenu : MonoBehaviour
 	   	// Remove this once Unity 5 has a more recent merge of Unity 4.6.
 		c.renderMode = RenderMode.World;
 #else
-		c.renderMode = RenderMode.WorldSpace;
+		//c.renderMode = RenderMode.WorldSpace;
 #endif
         c.pixelPerfect = false;
         OVRUGUI.RiftPresentGUI(RiftPresentGUIObject);
