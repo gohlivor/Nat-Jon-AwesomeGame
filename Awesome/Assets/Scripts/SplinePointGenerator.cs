@@ -8,7 +8,8 @@ public class SplinePointGenerator : MonoBehaviour
 	public Transform FirstPoint;
 	public Transform ForwardObject;
 	private Vector3 ForwardDirection;
-	public float AngularSpread = 85.0f;
+	public float HorizontalAngularSpread = 75.0f;
+	public float VerticalAngularSpread = 30.0f;
 	public float MinDistance = 10.0f;
 	public float MaxDistance = 1000.0f;
 
@@ -25,6 +26,7 @@ public class SplinePointGenerator : MonoBehaviour
 		GenerateNextPoint ();
 		GenerateNextPoint ();
 		GenerateNextPoint ();
+		GenerateNextPoint ();
 
 		test1.transform.position = SplinePoints [1];
 		test2.transform.position = SplinePoints [2];
@@ -34,15 +36,18 @@ public class SplinePointGenerator : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		if(Input.GetKeyDown(KeyCode.B))
+		{
+			GenerateNextPoint();
+		}
 	}
 
 	public void GenerateNextPoint()
 	{
 		Vector3 last_point = SplinePoints [SplinePoints.Count - 1];
 
-		float xz_angle = Random.Range (-1 * AngularSpread, AngularSpread);
-		float yz_angle = Random.Range (-1 * AngularSpread, AngularSpread);
+		float xz_angle = Random.Range (-1 * HorizontalAngularSpread, HorizontalAngularSpread);
+		float yz_angle = Random.Range (-1 * VerticalAngularSpread, VerticalAngularSpread);
 		float dist = Random.Range (MinDistance, MaxDistance);
 
 		float fd_dist_proj = Mathf.Cos (Mathf.Deg2Rad * Mathf.Abs(xz_angle)) * dist;
@@ -88,6 +93,6 @@ public class SplinePointGenerator : MonoBehaviour
 		}
 
 		Debug.Log (xyz_pos); 
-		SplinePoints.Add(xz_pos);
+		SplinePoints.Add(xyz_pos);
 	}
 }
